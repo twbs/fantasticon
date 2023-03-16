@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [master]
+    branches: [dev]
 
 env:
   FORCE_COLOR: 2
@@ -10,7 +10,7 @@ env:
 
 jobs:
   release:
-    if: github.repository == 'tancredi/fantasticon'
+    if: github.repository == 'twbs/fantasticon'
     name: Release
     runs-on: ubuntu-latest
 
@@ -31,4 +31,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --branches dev

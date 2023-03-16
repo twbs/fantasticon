@@ -9,8 +9,8 @@
 </blockquote>
 
 <p align="center">
-  <img src="https://github.com/tancredi/fantasticon/workflows/Test/badge.svg" alt="Test status">
-  <img src="https://github.com/tancredi/fantasticon/workflows/Release/badge.svg" alt="Release status">
+  <img src="https://github.com/twbs/fantasticon/workflows/Test/badge.svg" alt="Test status">
+  <img src="https://github.com/twbs/fantasticon/workflows/Release/badge.svg" alt="Release status">
 </p>
 
 ### Intro
@@ -22,7 +22,7 @@ It also generates TypeScript types, JSON maps of the generated code-points, allo
 ### Install
 
 ```bash
-npm install -g fantasticon
+npm install -g @twbs/fantasticon
 ```
 
 ## Use
@@ -135,7 +135,7 @@ module.exports = {
 #### Simple usage
 
 ```js
-import { generateFonts } from 'fantasticon';
+import { generateFonts } from '@twbs/fantasticon';
 
 generateFonts().then(results => console.log('Done', results));
 ```
@@ -143,7 +143,7 @@ generateFonts().then(results => console.log('Done', results));
 #### Options
 
 ```js
-import { generateFonts } from 'fantasticon';
+import { generateFonts } from '@twbs/fantasticon';
 
 generateFonts({
   name: 'icons',

@@ -1,10 +1,13 @@
 {
-  "name": "fantasticon",
+  "name": "@twbs/fantasticon",
   "version": "0.0.0",
   "description": "Icon font generation tool",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tancredi/fantasticon.git"
+    "url": "git+https://github.com/twbs//fantasticon.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "icons",
@@ -15,9 +18,9 @@
   ],
   "author": "Tancredi Trugenberger",
   "bugs": {
-    "url": "https://github.com/tancredi/fantasticon/issues"
+    "url": "https://github.com/twbs/fantasticon/issues"
   },
-  "homepage": "https://github.com/tancredi/fantasticon#readme",
+  "homepage": "https://github.com/twbs/fantasticon#readme",
   "main": "lib/index.js",
   "bin": {
     "fantasticon": "bin/fantasticon"
