@@ -4,7 +4,7 @@
   "description": "Icon font generation tool",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twbs//fantasticon.git"
+    "url": "git+https://github.com/twbs/fantasticon.git"
   },
   "publishConfig": {
     "access": "public"
