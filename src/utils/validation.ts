@@ -48,8 +48,8 @@ export const listMembersParser =
 
 export const removeUndefined = (object: Object) => {
   for (const key of Object.keys(object)) {
-    if (typeof object[key] === 'undefined') {
-      delete object[key];
+    if (object[key] === undefined) {
+      delete object[key]; // eslint-disable-line @typescript-eslint/no-dynamic-delete
     }
   }
 
@@ -59,9 +59,13 @@ export const removeUndefined = (object: Object) => {
 export const parseBoolean = (val: any) => {
   if (typeof val === 'string' && ['1', '0', 'true', 'false'].includes(val)) {
     return val === 'true' || val === '1';
-  } else if (typeof val === 'number' && [0, 1].includes(val)) {
+  }
+
+  if (typeof val === 'number' && [0, 1].includes(val)) {
     return val === 1;
-  } else if (typeof val === 'boolean') {
+  }
+
+  if (typeof val === 'boolean') {
     return val;
   }
 

@@ -1,6 +1,6 @@
 import { resolve } from 'path';
-import { RunnerOptions } from './types/runner';
 import { FontAssetType, OtherAssetType } from './types/misc';
+import { RunnerOptions } from './types/runner';
 import { getIconId } from './utils/icon-id';
 
 export const TEMPLATES_DIR = resolve(__dirname, '../templates');
@@ -26,7 +26,7 @@ export const DEFAULT_OPTIONS: Omit<RunnerOptions, 'inputDir' | 'outputDir'> = {
   tag: 'i',
   prefix: 'icon',
   fontsUrl: undefined,
-  getIconId: getIconId
+  getIconId
 };
 
 export const DEFAULT_START_CODEPOINT = 0xf101;

@@ -16,7 +16,8 @@ describe('Async FS utilities', () => {
     it('calls `stat` correctly and correctly check the existance of a path', async () => {
       const mockPath = '/dev/null';
 
-      statMock.mockImplementationOnce(() => Promise.resolve());
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      statMock.mockImplementationOnce(async () => {});
 
       expect(await checkPath(mockPath)).toBe(true);
       expect(statMock).toHaveBeenCalledTimes(1);
@@ -34,7 +35,7 @@ describe('Async FS utilities', () => {
       const mockPath = '/dev/null';
       const isDirectory = jest.fn(() => false);
 
-      statMock.mockImplementation(() => Promise.resolve({ isDirectory }));
+      statMock.mockImplementation(async () => ({ isDirectory }));
 
       expect(await checkPath(mockPath, 'directory')).toBe(false);
       expect(statMock).toHaveBeenCalledTimes(1);
@@ -50,7 +51,7 @@ describe('Async FS utilities', () => {
       const mockPath = '/dev/null';
       const isFile = jest.fn(() => false);
 
-      statMock.mockImplementation(() => Promise.resolve({ isFile }));
+      statMock.mockImplementation(async () => ({ isFile }));
 
       expect(await checkPath(mockPath, 'file')).toBe(false);
       expect(statMock).toHaveBeenCalledTimes(1);

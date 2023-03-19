@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import _ttf2woff2 from 'ttf2woff2';
 import { FontGeneratorOptions } from '../../../types/generator';
 import woff2Gen from '../woff2';
@@ -9,7 +10,7 @@ jest.mock('ttf2woff2', () =>
 );
 
 const mockOptions = (woffOptions = { __mock: 'options__' } as any) =>
-  ({}) as unknown as FontGeneratorOptions;
+  ({} as unknown as FontGeneratorOptions);
 
 const ttf = '::ttf::' as unknown as Buffer;
 

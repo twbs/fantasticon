@@ -7,19 +7,17 @@ const resolve = (...paths: string[]) => {
   let path = '';
 
   for (const cur of paths) {
-    path = !path ? normalize(cur) : _path.join(path, normalize(cur));
+    path = path ? _path.join(path, normalize(cur)) : normalize(cur);
   }
 
   if (path.startsWith(projectDir)) {
     path = _path.join('/root/project', path.substr(projectDir.length));
   } else if (path.startsWith('/') && !path.startsWith('/root')) {
     path = _path.join('/root/', path.substr(1));
-  } else {
-    if (path.startsWith('./')) {
-      path = _path.join('/root/project/', path.substr(2));
-    } else if (!path.startsWith('/')) {
-      path = _path.join('/root/project/', path);
-    }
+  } else if (path.startsWith('./')) {
+    path = _path.join('/root/project/', path.substr(2));
+  } else if (!path.startsWith('/')) {
+    path = _path.join('/root/project/', path);
   }
 
   return normalize(path);
@@ -31,7 +29,7 @@ const relative = (a: string, b: string) =>
 const join = (...segments: string[]): string => {
   const trimmed: string[] = [];
 
-  segments.forEach((current, i) => {
+  for (let [i, current] of segments.entries()) {
     const isFirst = i === 0;
     const isLast = i === segments.length - 1;
 
@@ -44,7 +42,7 @@ const join = (...segments: string[]): string => {
     }
 
     trimmed.push(current);
-  });
+  }
 
   return trimmed.join('/');
 };

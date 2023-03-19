@@ -1,16 +1,13 @@
+import process from 'process';
 import commander from 'commander';
 import { FontAssetType, OtherAssetType } from '../types/misc';
-import { loadConfig, DEFAULT_FILEPATHS } from './config-loader';
 import { DEFAULT_OPTIONS } from '../constants';
 import { generateFonts } from '../core/runner';
 import { removeUndefined } from '../utils/validation';
+import { loadConfig, DEFAULT_FILEPATHS } from './config-loader';
 import { getLogger } from './logger';
-
-const {
-  bin,
-  name: packageName,
-  version
-} = require('../../package.json') as any;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { bin, name: packageName, version } = require('../../package.json');
 
 const getCommandName = () => (bin && Object.keys(bin)[0]) || packageName;
 
@@ -37,11 +34,9 @@ const printList = (available: { [key: string]: string }, defaults: string[]) =>
   ).join(', ')})`;
 
 const printDefaultValue = (value: any) => {
-  let printVal = String(value);
+  const printVal = String(value);
 
-  if (typeof value === 'undefined') {
-    return '';
-  }
+  if (value === undefined) return '';
 
   return ` (default: ${printVal})`;
 };
@@ -137,6 +132,7 @@ const buildOptions = async (cmd: commander.Command, loadedConfig = {}) => {
   };
 };
 
-const run = async (options: any) => await generateFonts(options, true);
+const run = async (options: any) => generateFonts(options, true);
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 cli();

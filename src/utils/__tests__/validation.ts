@@ -32,7 +32,7 @@ describe('Cli utilities', () => {
     it.each(['a', {}, undefined, true, false, null])(
       'throws an error when given a non-numeric value - input: %s',
       input => {
-        expect(() => parseNumeric(input as any)).toThrow(
+        expect(() => parseNumeric(input as unknown as any)).toThrow(
           `${input} is not a valid number`
         );
       }
@@ -48,9 +48,10 @@ describe('Cli utilities', () => {
     );
 
     it('throws an error when given a non-string value', () => {
-      for (const value of [1, true, {}, undefined, null, false]) {
+      const values = [1, true, {}, undefined, null, false];
+      for (const value of values) {
         expect(() => parseString(value as any)).toThrow(
-          `${value} is not a string`
+          `${value} is not a string` // eslint-disable-line @typescript-eslint/no-base-to-string
         );
       }
     });
@@ -63,6 +64,7 @@ describe('Cli utilities', () => {
       expect(parseFunction(fn)).toBe(fn);
     });
 
+    // eslint-disable-next-line prefer-regex-literals
     it.each([null, undefined, '', 'foo', 10, {}, new RegExp('foo')])(
       '`parseFunction` throws expected error if given path is found not to be a function - input: %s',
       input => {
@@ -164,7 +166,7 @@ describe('Cli utilities', () => {
     it('calls `checkPath` correctly and returns unchanged path if found to be an existing directory', async () => {
       const dirname = '/foo/bar';
 
-      checkPathMock.mockImplementationOnce(() => Promise.resolve(true));
+      checkPathMock.mockImplementationOnce(async () => true);
 
       expect(await parseDir(dirname)).toBe(dirname);
       expect(checkPathMock).toHaveBeenCalledTimes(1);
@@ -174,9 +176,9 @@ describe('Cli utilities', () => {
     it('throws expected error if given path is found not to be a directory', async () => {
       const dirname = '/foo/bar';
 
-      checkPathMock.mockImplementationOnce(() => Promise.resolve(false));
+      checkPathMock.mockImplementationOnce(async () => false);
 
-      await expect(() => parseDir(dirname)).rejects.toThrow(
+      await expect(async () => parseDir(dirname)).rejects.toThrow(
         '/foo/bar is not a directory'
       );
     });

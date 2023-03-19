@@ -1,6 +1,7 @@
+import { Buffer } from 'buffer';
+import { resolve } from 'path';
 import lessGen from '../less';
 import { renderSrcAttribute } from '../../../utils/css';
-import { resolve } from 'path';
 
 const renderSrcMock = renderSrcAttribute as any as jest.Mock;
 

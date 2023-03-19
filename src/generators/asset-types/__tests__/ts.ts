@@ -1,5 +1,5 @@
+import { dirname, join } from 'path';
 import tsGen from '../ts';
-import { join, dirname } from 'path';
 
 const mockAssets = {
   foo: {

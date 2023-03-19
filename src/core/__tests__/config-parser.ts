@@ -39,19 +39,19 @@ const mockConfig = {
 };
 
 const testError = async (options: object, key: string, message: string) =>
-  expect(() => parseConfig({ ...mockConfig, ...options })).rejects.toThrow(
-    `Invalid option ${key}: ${message}`
-  );
+  expect(async () =>
+    parseConfig({ ...mockConfig, ...options })
+  ).rejects.toThrow(`Invalid option ${key}: ${message}`);
 
-const testParsed = async (key: string, input: any, output: any) =>
-  expect((await parseConfig({ ...mockConfig, [key]: input }))[key]).toEqual(
-    output
-  );
+const testParsed = async (key: string, input: any, output: any) => {
+  const config = await parseConfig({ ...mockConfig, [key]: input });
+  expect(config[key]).toEqual(output);
+};
 
 describe('Config parser', () => {
   beforeEach(() => {
     checkPathMock.mockClear();
-    checkPathMock.mockImplementation(() => Promise.resolve(true));
+    checkPathMock.mockImplementation(async () => true);
   });
 
   test('returns correctly parsed input when valid', async () => {
@@ -94,11 +94,11 @@ describe('Config parser', () => {
   });
 
   test('correctly validates existance of input and output paths', async () => {
-    checkPathMock.mockImplementationOnce(() => Promise.resolve(false));
+    checkPathMock.mockImplementationOnce(async () => false);
 
     await testError({ inputDir: 'foo' }, 'inputDir', 'foo is not a directory');
 
-    checkPathMock.mockImplementation(val => Promise.resolve(val !== 'bar'));
+    checkPathMock.mockImplementation(async val => val !== 'bar');
 
     await testError(
       { outputDir: 'bar' },
@@ -108,7 +108,7 @@ describe('Config parser', () => {
   });
 
   test('throws expected error when passing an unrecognised option', async () => {
-    await expect(() =>
+    await expect(async () =>
       parseConfig({ ...mockConfig, foo: 'bar' })
     ).rejects.toThrow("The option 'foo' is not recognised");
   });

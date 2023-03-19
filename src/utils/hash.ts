@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import crypto from 'crypto';
 
 export const getHash = (...contents: Array<string | Buffer>) => {

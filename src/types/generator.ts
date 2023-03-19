@@ -1,7 +1,8 @@
+import { Buffer } from 'buffer';
 import { AssetsMap } from '../utils/assets';
+import { FormatOptions } from './format';
 import { AssetType, OtherAssetType } from './misc';
 import { RunnerOptions } from './runner';
-import { FormatOptions } from './format';
 
 export type FontGeneratorOptions = RunnerOptions & {
   assets: AssetsMap;

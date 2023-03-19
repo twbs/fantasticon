@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { getHash } from '../hash';
 
 describe('Hash utilities', () => {

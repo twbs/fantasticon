@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
-import Handlebars from 'handlebars';
 import { isAbsolute, resolve } from 'path';
+import process from 'process';
+import Handlebars from 'handlebars';
 import { getHexCodepoint } from './codepoints';
 
 export const TEMPLATE_HELPERS: Record<string, Function> = {
@@ -23,6 +24,6 @@ export const renderTemplate = async (
 
   return Handlebars.compile(template)(context, {
     ...options,
-    helpers: { ...TEMPLATE_HELPERS, ...(options.helpers || {}) }
+    helpers: { ...TEMPLATE_HELPERS, ...options.helpers }
   });
 };

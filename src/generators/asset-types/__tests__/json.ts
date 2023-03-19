@@ -1,6 +1,6 @@
-import jsonGen from '../json';
-import { OtherAssetType } from '../../../types/misc';
 import { DEFAULT_OPTIONS } from '../../../constants';
+import { OtherAssetType } from '../../../types/misc';
+import jsonGen from '../json';
 
 const mockCodepoints = { foo: 'oof', bar: 'baz' };
 
@@ -8,7 +8,7 @@ const mockOptions = (jsonOptions: any = {}) =>
   ({
     codepoints: mockCodepoints,
     formatOptions: { [OtherAssetType.JSON]: jsonOptions }
-  }) as any;
+  } as any);
 
 const renderAndParse = async (jsonOptions?: any) =>
   JSON.parse(

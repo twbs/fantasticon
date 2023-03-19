@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import ttf2woff from 'ttf2woff';
 import { FontGenerator } from '../../types/generator';
 import { FontAssetType } from '../../types/misc';

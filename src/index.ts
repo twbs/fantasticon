@@ -1,12 +1,12 @@
+export { generateFonts as default, generateFonts } from './core/runner';
+
 export {
-  FontAssetType,
-  OtherAssetType,
-  ASSET_TYPES,
   AssetType,
+  ASSET_TYPES,
+  FontAssetType,
   GetIconIdFn,
-  GetIconIdOptions
+  GetIconIdOptions,
+  OtherAssetType
 } from './types/misc';
 
 export { RunnerOptions } from './types/runner';
-
-export { generateFonts, generateFonts as default } from './core/runner';
