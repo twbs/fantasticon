@@ -31,8 +31,9 @@
     "build": "rimraf lib && tsc --project ./tsconfig.json",
     "watch": "npm run build -- --watch",
     "typecheck": "tsc --noEmit --project tsconfig.test.json --noEmit",
-    "lint": "prettier --check .",
-    "fix": "prettier --write ."
+    "lint": "xo && prettier --check .",
+    "fix": "xo --fix && prettier --write .",
+    "xo": "xo"
   },
   "files": [
     "bin/fantasticon",
@@ -69,9 +70,56 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.5",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "xo": "^0.54.2"
   },
   "engines": {
     "node": ">=14"
+  },
+  "xo": {
+    "space": true,
+    "prettier": true,
+    "rules": {
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/consistent-indexed-object-style": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/consistent-type-exports": "off",
+      "@typescript-eslint/consistent-type-imports": "off",
+      "@typescript-eslint/default-param-last": "off",
+      "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/no-implicit-any-catch": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "capitalized-comments": "off",
+      "import/extensions": "off",
+      "import/no-cycle": "off",
+      "max-params": "off",
+      "no-await-in-loop": "off",
+      "prefer-template": "off",
+      "spaced-comment": "off",
+      "unicorn/no-array-reduce": "off",
+      "unicorn/numeric-separators-style": "off",
+      "unicorn/prefer-code-point": "off",
+      "unicorn/prefer-module": "off",
+      "unicorn/prefer-node-protocol": "off",
+      "unicorn/prefer-string-slice": "off",
+      "unicorn/prefer-type-error": "off",
+      "unicorn/prevent-abbreviations": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/{__mocks__,__tests__}/**"
+        ],
+        "envs": [
+          "jest"
+        ]
+      }
+    ]
   }
 }
