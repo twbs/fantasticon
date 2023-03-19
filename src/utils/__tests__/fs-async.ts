@@ -34,7 +34,7 @@ describe('Async FS utilities', () => {
       const mockPath = '/dev/null';
       const isDirectory = jest.fn(() => false);
 
-      statMock.mockImplementation(() => Promise.resolve( { isDirectory }));
+      statMock.mockImplementation(() => Promise.resolve({ isDirectory }));
 
       expect(await checkPath(mockPath, 'directory')).toBe(false);
       expect(statMock).toHaveBeenCalledTimes(1);
@@ -50,7 +50,7 @@ describe('Async FS utilities', () => {
       const mockPath = '/dev/null';
       const isFile = jest.fn(() => false);
 
-      statMock.mockImplementation(() =>  Promise.resolve({ isFile }));
+      statMock.mockImplementation(() => Promise.resolve({ isFile }));
 
       expect(await checkPath(mockPath, 'file')).toBe(false);
       expect(statMock).toHaveBeenCalledTimes(1);
