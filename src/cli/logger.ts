@@ -23,15 +23,14 @@ export const getLogger = (debug = false, silent = false) => ({
   start(loadedConfigPath: string = null) {
     this.log(picocolor.yellow('Generating font kit...'));
 
-    if (loadedConfigPath) {
-      this.log(
-        picocolor.green(
-          `${figures.tick} Using configuration file: ${picocolor.green(
-            picocolor.bold(loadedConfigPath)
-          )}`
-        )
-      );
-    }
+    if (!loadedConfigPath) return;
+    this.log(
+      picocolor.green(
+        `${figures.tick} Using configuration file: ${picocolor.green(
+          picocolor.bold(loadedConfigPath)
+        )}`
+      )
+    );
   },
 
   results({ assetsIn, writeResults, options: { inputDir } }: RunnerResults) {

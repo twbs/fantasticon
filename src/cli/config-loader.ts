@@ -12,13 +12,15 @@ export const DEFAULT_FILEPATHS = [
 ];
 
 const attemptLoading = async (filepath: string): Promise<any | void> => {
-  if (await checkPath(filepath, 'file')) {
+  const fileExists = await checkPath(filepath, 'file');
+  if (fileExists) {
     try {
       return require(join(process.cwd(), filepath));
     } catch (err) {}
 
     try {
-      return JSON.parse(await readFile(filepath, 'utf8'));
+      const content = await readFile(filepath, 'utf8');
+      return JSON.parse(content);
     } catch (err) {}
 
     throw new Error(`Failed parsing configuration at '${filepath}'`);

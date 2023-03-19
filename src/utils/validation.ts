@@ -73,7 +73,8 @@ const skipIfMatching =
     val === match ? match : fn(val);
 
 export const parseDir = async (dirname: string) => {
-  if ((await checkPath(dirname, 'directory')) === false) {
+  const dirExists = await checkPath(dirname, 'directory');
+  if (!dirExists) {
     throw new Error(`${dirname} is not a directory`);
   }
 
