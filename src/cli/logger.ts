@@ -24,6 +24,7 @@ export const getLogger = (debug = false, silent = false) => ({
     this.log(picocolor.yellow('Generating font kit...'));
 
     if (!loadedConfigPath) return;
+
     this.log(
       picocolor.green(
         `${figures.tick} Using configuration file: ${picocolor.green(

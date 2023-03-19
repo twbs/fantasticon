@@ -1,6 +1,8 @@
+import { Buffer } from 'buffer';
+import EventEmitter from 'events';
 import * as _SVGIcons2SVGFontStream from 'svgicons2svgfont';
-import { FontAssetType } from '../../../types/misc';
 import { FontGeneratorOptions } from '../../../types/generator';
+import { FontAssetType } from '../../../types/misc';
 import svgGen from '../svg';
 
 const SVGIcons2SVGFontStream = _SVGIcons2SVGFontStream as unknown as jest.Mock<
@@ -14,8 +16,6 @@ jest.mock('fs', () => ({
 }));
 
 jest.mock('svgicons2svgfont', () => {
-  const { EventEmitter } = require('events');
-
   class MockStream {
     public events = new EventEmitter();
     public content = '';

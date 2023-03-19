@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import _ttf2eot from 'ttf2eot';
 import { FontGeneratorOptions } from '../../../types/generator';
 import eotGen from '../eot';

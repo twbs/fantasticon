@@ -1,6 +1,7 @@
+import { Buffer } from 'buffer';
 import _ttf2woff from 'ttf2woff';
-import { FontAssetType } from '../../../types/misc';
 import { FontGeneratorOptions } from '../../../types/generator';
+import { FontAssetType } from '../../../types/misc';
 import woffGen from '../woff';
 
 const ttf2woff = _ttf2woff as unknown as jest.Mock<typeof _ttf2woff>;

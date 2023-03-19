@@ -12,7 +12,7 @@ export const checkPath = async (
     }
 
     return true;
-  } catch (err) {
+  } catch {
     return false;
   }
 };

@@ -8,7 +8,7 @@ const writeFileMock = writeFile as any as jest.Mock;
 jest.mock('path');
 jest.mock('glob');
 jest.mock('fs/promises', () => ({
-  writeFile: jest.fn(() => Promise.resolve())
+  writeFile: jest.fn()
 }));
 
 describe('Assets utilities', () => {
@@ -27,7 +27,7 @@ describe('Assets utilities', () => {
       expect(paths).toBeInstanceOf(Array);
       expect(paths.length).toBeTruthy();
 
-      paths.forEach(path => expect(typeof path).toBe('string'));
+      for (const path of paths) expect(typeof path).toBe('string');
     });
 
     it('resolves an Array of the correct filepaths within the given directory', async () => {
@@ -144,12 +144,12 @@ describe('Assets utilities', () => {
     it('rejects correctly if `getIconId` resolves the same `key` while processing different assets', async () => {
       const getIconId: GetIconIdFn = () => 'xxx';
 
-      await expect(() =>
+      await expect(async () =>
         loadAssets({
           ...DEFAULT_OPTIONS,
           inputDir: './valid',
           outputDir: './output',
-          getIconId: getIconId
+          getIconId
         })
       ).rejects.toEqual(
         new Error(

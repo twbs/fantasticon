@@ -1,6 +1,6 @@
-import jsonGen from '../json';
-import { OtherAssetType } from '../../../types/misc';
 import { DEFAULT_OPTIONS } from '../../../constants';
+import { OtherAssetType } from '../../../types/misc';
+import jsonGen from '../json';
 
 const mockCodepoints = { foo: 'oof', bar: 'baz' };
 

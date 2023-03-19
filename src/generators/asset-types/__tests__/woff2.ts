@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import _ttf2woff2 from 'ttf2woff2';
 import { FontGeneratorOptions } from '../../../types/generator';
 import woff2Gen from '../woff2';

@@ -1,16 +1,16 @@
 import { join } from 'path';
 import { DEFAULT_OPTIONS, TEMPLATES_DIR } from '../constants';
-import { RunnerOptions } from '../types/runner';
 import { FormatOptions } from '../types/format';
-import { getCodepoints } from '../utils/codepoints';
 import { FontGeneratorOptions } from '../types/generator';
 import {
   AssetType,
-  OtherAssetType,
   ASSET_TYPES,
-  ASSET_TYPES_WITH_TEMPLATE
+  ASSET_TYPES_WITH_TEMPLATE,
+  OtherAssetType
 } from '../types/misc';
+import { RunnerOptions } from '../types/runner';
 import { AssetsMap } from '../utils/assets';
+import { getCodepoints } from '../utils/codepoints';
 
 export const getGeneratorOptions = (
   options: RunnerOptions,

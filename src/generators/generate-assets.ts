@@ -1,5 +1,6 @@
-import { AssetType, FontAssetType, OtherAssetType } from '../types/misc';
+import { Buffer } from 'buffer';
 import { FontGeneratorOptions } from '../types/generator';
+import { AssetType, FontAssetType, OtherAssetType } from '../types/misc';
 import generators from './asset-types';
 
 export type GeneratedAssets = {
@@ -24,18 +25,19 @@ export const generateAssets = async (
       generated[dependsOn] = await generateAsset(dependsOn);
     }
 
-    return (generated[type] = await generator.generate(
+    generated[type] = await generator.generate(
       options,
       dependsOn ? generated[dependsOn] : null
-    ));
+    );
+
+    return generated[type];
   };
 
   for (const type of generateTypes) {
     await generateAsset(type);
   }
 
-  return generateTypes.reduce(
-    (out, type: AssetType) => ({ ...out, [type]: generated[type] }),
-    {}
+  return Object.fromEntries(
+    generateTypes.map((type: AssetType) => [type, generated[type]])
   );
 };

@@ -1,5 +1,6 @@
 import { readFile } from 'fs/promises';
 import { join } from 'path';
+import process from 'process';
 import { checkPath } from '../utils/fs-async';
 
 export const DEFAULT_FILEPATHS = [
@@ -16,12 +17,12 @@ const attemptLoading = async (filepath: string): Promise<any | void> => {
   if (fileExists) {
     try {
       return require(join(process.cwd(), filepath));
-    } catch (err) {}
+    } catch {}
 
     try {
       const content = await readFile(filepath, 'utf8');
       return JSON.parse(content);
-    } catch (err) {}
+    } catch {}
 
     throw new Error(`Failed parsing configuration at '${filepath}'`);
   }

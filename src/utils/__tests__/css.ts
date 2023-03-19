@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { renderSrcAttribute } from '../css';
 import { FontAssetType } from '../../types/misc';
 import * as hashUtils from '../hash';

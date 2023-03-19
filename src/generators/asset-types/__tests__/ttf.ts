@@ -1,6 +1,7 @@
+import { Buffer } from 'buffer';
 import _svg2ttf from 'svg2ttf';
-import { FontAssetType } from '../../../types/misc';
 import { FontGeneratorOptions } from '../../../types/generator';
+import { FontAssetType } from '../../../types/misc';
 import ttfGen from '../ttf';
 
 const svg2ttf = _svg2ttf as unknown as jest.Mock<typeof _svg2ttf>;

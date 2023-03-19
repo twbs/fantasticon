@@ -1,6 +1,7 @@
-import cssGen from '../css';
-import { renderSrcAttribute } from '../../../utils/css';
+import { Buffer } from 'buffer';
 import { resolve } from 'path';
+import { renderSrcAttribute } from '../../../utils/css';
+import cssGen from '../css';
 
 const renderSrcMock = renderSrcAttribute as any as jest.Mock;
 
