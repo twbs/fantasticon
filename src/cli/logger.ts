@@ -1,4 +1,4 @@
-import color from 'cli-color';
+import picocolor from 'picocolors';
 import figures from 'figures';
 import { RunnerResults } from '../core/runner';
 import { pluralize } from '../utils/string';
@@ -7,23 +7,27 @@ export const getLogger = (debug = false, silent = false) => ({
   error(error: Error | string) {
     const message = (error instanceof Error && error.message) || error;
 
-    console.log(color.red(message));
+    console.log(picocolor.red(String(message)));
 
-    debug && error instanceof Error && console.log(error.stack);
+    if (debug && error instanceof Error) {
+      console.log(error.stack);
+    }
   },
 
   log(...values: any[]) {
-    !silent && console.log(...values);
+    if (!silent) {
+      console.log(...values);
+    }
   },
 
   start(loadedConfigPath: string = null) {
-    this.log(color.yellow('Generating font kit...'));
+    this.log(picocolor.yellow('Generating font kit...'));
 
     if (loadedConfigPath) {
       this.log(
-        color.green(
-          `${figures.tick} Using configuration file: ${color.green.bold(
-            loadedConfigPath
+        picocolor.green(
+          `${figures.tick} Using configuration file: ${picocolor.green(
+            picocolor.bold(loadedConfigPath)
           )}`
         )
       );
@@ -34,7 +38,7 @@ export const getLogger = (debug = false, silent = false) => ({
     const iconsCount = Object.values(assetsIn).length;
 
     this.log(
-      color.white(
+      picocolor.white(
         `${figures.tick} ${iconsCount} ${pluralize(
           'SVG',
           iconsCount
@@ -44,10 +48,10 @@ export const getLogger = (debug = false, silent = false) => ({
 
     for (const { writePath } of writeResults) {
       this.log(
-        color.blue(`${figures.tick} Generated`, color.blueBright(writePath))
+        picocolor.blue(`${figures.tick} Generated ${picocolor.cyan(writePath)}`)
       );
     }
 
-    this.log(color.green.bold('Done'));
+    this.log(picocolor.green(picocolor.bold('Done')));
   }
 });

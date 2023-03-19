@@ -43,11 +43,11 @@
   "prepublish": "build",
   "dependencies": {
     "change-case": "^4.1.2",
-    "cli-color": "^2.0.3",
     "commander": "^9.5.0",
     "figures": "^3.2.0",
     "glob": "^7.2.3",
     "handlebars": "^4.7.7",
+    "picocolors": "^1.0.0",
     "slugify": "^1.6.5",
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^12.0.0",
@@ -56,7 +56,6 @@
     "ttf2woff2": "^5.0.0"
   },
   "devDependencies": {
-    "@types/cli-color": "^2.0.2",
     "@types/glob": "^7.2.0",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.3",
