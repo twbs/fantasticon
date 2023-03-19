@@ -1,13 +1,13 @@
-import { loadPaths, loadAssets, writeAssets } from '../assets';
-import { GetIconIdFn } from '../../types/misc';
+import { writeFile } from 'fs/promises';
 import { DEFAULT_OPTIONS } from '../../constants';
-import { writeFile } from '../fs-async';
+import { GetIconIdFn } from '../../types/misc';
+import { loadAssets, loadPaths, writeAssets } from '../assets';
 
 const writeFileMock = writeFile as any as jest.Mock;
 
 jest.mock('path');
 jest.mock('glob');
-jest.mock('../../utils/fs-async', () => ({
+jest.mock('fs/promises', () => ({
   writeFile: jest.fn(() => Promise.resolve())
 }));
 

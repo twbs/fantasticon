@@ -1,10 +1,10 @@
+import { writeFile } from 'fs/promises';
 import glob from 'glob';
+import { join, relative, resolve } from 'path';
 import { promisify } from 'util';
-import { resolve, relative, join } from 'path';
-import { removeExtension, splitSegments } from '../utils/path';
-import { writeFile } from './fs-async';
-import { RunnerOptions } from '../types/runner';
 import { GeneratedAssets } from '../generators/generate-assets';
+import { RunnerOptions } from '../types/runner';
+import { removeExtension, splitSegments } from '../utils/path';
 
 export type WriteResult = { content: string | Buffer; writePath: string };
 
