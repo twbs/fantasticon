@@ -12,7 +12,7 @@ export const DEFAULT_FILEPATHS = [
   'fantasticonrc.js'
 ];
 
-const attemptLoading = async (filepath: string): Promise<any | void> => {
+const attemptLoading = async (filepath: string) => {
   const fileExists = await checkPath(filepath, 'file');
   if (fileExists) {
     try {

@@ -100,7 +100,6 @@
       "@typescript-eslint/default-param-last": "off",
       "@typescript-eslint/naming-convention": "off",
       "@typescript-eslint/no-implicit-any-catch": "off",
-      "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "off",
