@@ -1,8 +1,8 @@
-![Logo](https://github.com/twbs/fantasticon/blob/main/.github/logo.png)
+![Logo](https://github.com/twbs/fantasticon/blob/dev/.github/logo.png)
 
 <h2 align="center">Fantasticon</h2>
 
-![Screenshot](https://github.com/twbs/fantasticon/blob/main/.github/screenshot.png)
+![Screenshot](https://github.com/twbs/fantasticon/blob/dev/.github/screenshot.png)
 
 <blockquote align="center">
   Easy-to-use, pre-configured CLI tool to generate web-font icon kits from SVG files
