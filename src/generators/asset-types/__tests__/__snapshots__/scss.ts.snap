@@ -4,27 +4,28 @@ exports[`\`SCSS\` asset generator renders SCSS correctly with \`selector\` optio
 "$test-font: "test";
 
 @font-face {
-    font-family: $test-font;
-    src: "::src-attr::";
+  font-display: block;
+  font-family: $test-font;
+  src: "::src-attr::";
 }
 
-.my-selector:before {
-    font-family: test !important;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.my-selector::before {
+  font-family: test !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 $test-map: (
-    "my-icon": "\\f101",
+  "my-icon": "\\f101",
 );
 
-.my-selector.tf-my-icon:before {
-    content: map-get($test-map, "my-icon");
+.my-selector.tf-my-icon::before {
+  content: map-get($test-map, "my-icon");
 }
 "
 `;
@@ -33,27 +34,28 @@ exports[`\`SCSS\` asset generator renders SCSS correctly with prefix and tag nam
 "$test-font: "test";
 
 @font-face {
-    font-family: $test-font;
-    src: "::src-attr::";
+  font-display: block;
+  font-family: $test-font;
+  src: "::src-attr::";
 }
 
-b[class^="tf-"]:before, b[class*=" tf-"]:before {
-    font-family: test !important;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+b[class^="tf-"]::before, b[class*=" tf-"]::before {
+  font-family: test !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 $test-map: (
-    "my-icon": "\\f101",
+  "my-icon": "\\f101",
 );
 
-.tf-my-icon:before {
-    content: map-get($test-map, "my-icon");
+.tf-my-icon::before {
+  content: map-get($test-map, "my-icon");
 }
 "
 `;

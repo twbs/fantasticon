@@ -1,29 +1,30 @@
 @font-face {
-    font-family: "{{ name }}";
-    src: {{{ fontSrc }}};
+  font-display: block;
+  font-family: "{{ name }}";
+  src: {{{ fontSrc }}};
 }
 
 {{# if selector }}
-{{ selector }}:before {
+{{ selector }}::before {
 {{ else }}
-{{ tag }}[class^="{{prefix}}-"]:before, {{ tag }}[class*=" {{prefix}}-"]:before {
+{{ tag }}[class^="{{prefix}}-"]::before, {{ tag }}[class*=" {{prefix}}-"]::before {
 {{/ if }}
-    font-family: {{ name }} !important;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: {{ name }} !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 {{# each codepoints }}
 {{# if ../selector }}
-{{ ../selector }}.{{ ../prefix }}-{{ @key }}:before {
+{{ ../selector }}.{{ ../prefix }}-{{ @key }}::before {
 {{ else }}
-{{ tag }}.{{ ../prefix }}-{{ @key }}:before {
+{{ tag }}.{{ ../prefix }}-{{ @key }}::before {
 {{/ if }}
-    content: "\\{{ codepoint this }}";
+  content: "\\{{ codepoint this }}";
 }
 {{/ each }}
