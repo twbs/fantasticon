@@ -15,7 +15,7 @@ const generateEnumKeys = (assetKeys: string[]): Record<string, string> =>
 
 const generateEnums = (
   enumName: string,
-  enumKeys: { [eKey: string]: string },
+  enumKeys: Record<string, string>,
   quote = '"'
 ): string =>
   [
@@ -40,7 +40,7 @@ const generateConstant = ({
   enumName: string;
   literalIdName: string;
   literalKeyName: string;
-  enumKeys: { [eKey: string]: string };
+  enumKeys: Record<string, string>;
   codepoints: Record<string, number>;
   quote?: '"' | "'";
   kind: Record<string, boolean>;

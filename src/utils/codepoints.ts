@@ -1,7 +1,7 @@
 import { DEFAULT_START_CODEPOINT } from '../constants';
 import { AssetsMap } from './assets';
 
-export type CodepointsMap = { [key: string]: number };
+export type CodepointsMap = Record<string, number>;
 
 export const getCodepoints = (
   assets: AssetsMap,

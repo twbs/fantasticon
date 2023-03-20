@@ -17,9 +17,7 @@ export interface IconAsset {
   relativePath: string;
 }
 
-export interface AssetsMap {
-  [key: string]: IconAsset;
-}
+export type AssetsMap = Record<string, IconAsset>;
 
 export const ASSETS_EXTENSION = 'svg';
 

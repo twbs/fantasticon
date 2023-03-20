@@ -29,7 +29,7 @@ const cli = async () => {
   }
 };
 
-const printList = (available: { [key: string]: string }, defaults: string[]) =>
+const printList = (available: Record<string, string>, defaults: string[]) =>
   ` (default: ${defaults.join(', ')}, available: ${Object.values(
     available
   ).join(', ')})`;
