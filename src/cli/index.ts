@@ -22,8 +22,8 @@ const cli = async () => {
 
   try {
     const { loadedConfig, loadedConfigPath } = await loadConfig(configPath);
-    const results = await run(await buildOptions(input, loadedConfig));
     logger.start(loadedConfigPath);
+    const results = await run(await buildOptions(input, loadedConfig));
     logger.results(results);
   } catch (error) {
     logger.error(error);
