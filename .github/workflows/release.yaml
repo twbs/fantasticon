@@ -3,6 +3,7 @@ name: Release
 on:
   push:
     branches: [dev]
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
@@ -31,4 +32,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --branches dev
+        run: npm run semantic-release --branches dev
