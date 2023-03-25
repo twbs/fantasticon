@@ -9,8 +9,7 @@
 </blockquote>
 
 <p align="center">
-  <img src="https://github.com/twbs/fantasticon/workflows/Test/badge.svg" alt="Test status">
-  <img src="https://github.com/twbs/fantasticon/workflows/Release/badge.svg" alt="Release status">
+  <img src="https://github.com/twbs/fantasticon/actions/workflows/ci.yml/badge.svg" alt="CI status">
 </p>
 
 ### Intro
