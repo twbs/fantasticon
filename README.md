@@ -9,7 +9,12 @@
 </blockquote>
 
 <p align="center">
-  <img src="https://github.com/twbs/fantasticon/actions/workflows/ci.yml/badge.svg" alt="CI status">
+  <a href="https://github.com/twbs/fantasticon/actions/workflows/ci.yml?query=branch%3Adev">
+    <img src="https://img.shields.io/github/actions/workflow/status/twbs/fantasticon/ci.yml?branch=dev&label=CI&logo=github" alt="CI status">
+  </a>
+  <a href="https://www.npmjs.com/package/@twbs/fantasticon">
+    <img src="https://img.shields.io/npm/v/@twbs/fantasticon?logo=npm&logoColor=fff" alt="npm version">
+  </a>
 </p>
 
 ### Intro
