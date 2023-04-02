@@ -15,6 +15,7 @@
   "exclude": [
     "node_modules",
     "lib",
+    "jest.config.js",
     "src/**/__mocks__/*.ts",
     "src/**/__tests__/*.ts"
   ]
