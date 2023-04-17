@@ -43,7 +43,7 @@
   "prepublish": "build",
   "dependencies": {
     "change-case": "^4.1.2",
-    "commander": "^10.0.0",
+    "commander": "^10.0.1",
     "figures": "^3.2.0",
     "glob": "^7.2.3",
     "handlebars": "^4.7.7",
@@ -66,7 +66,7 @@
     "@types/ttf2woff2": "^2.0.0",
     "jest": "^29.5.0",
     "prettier": "^2.8.7",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.0",
     "semantic-release": "^19.0.5",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
