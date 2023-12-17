@@ -41,7 +41,7 @@ fantasticon my-icons -o icon-dist
 
 **Note:** Not all options can be specified through the command line - for `formatOptions`, `pathOptions`, `getIconId` and `templates` use a [configuration file](#configuration-file) or the JavaScript [API](#api).
 
-```
+```text
 Usage: fantasticon [options] [input-dir]
 
 Options:
@@ -72,7 +72,7 @@ To have more control and better readability, you can create a simple configurati
 
 By default, `fantasticon` will look for one of following files in the working directory:
 
-```
+```text
 .fantasticonrc | fantasticonrc | .fantasticonrc.json | fantasticonrc.json | .fantasticonrc.js | fantasticonrc.js
 ```
 
@@ -181,7 +181,7 @@ This allows arranging your icons in namespaces, which can be useful if a project
 
 Considering the following `./icons` input directory:
 
-```
+```text
 icons
 ├── logo.svg
 ├── social
@@ -211,4 +211,4 @@ PRs are always welcome. If you need help questions, want to bounce ideas or just
 
 ### License
 
-Copyright (c) 2020 Tancredi Trugenberger. - Released under the [MIT license](https://github.com/tancredi/fantasticon/blob/master/LICENSE)
+Copyright (c) 2020 Tancredi Trugenberger. - Released under the [MIT license](LICENSE)
