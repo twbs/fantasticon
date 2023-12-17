@@ -71,10 +71,10 @@
     "semantic-release": "^19.0.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2",
-    "xo": "^0.54.2"
+    "xo": "^0.58.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "xo": {
     "space": true,
