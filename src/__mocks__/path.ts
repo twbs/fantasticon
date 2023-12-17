@@ -47,7 +47,7 @@ const join = (...segments: string[]): string => {
   return trimmed.join('/');
 };
 
-const normalize = (path: string) => path.replace(/\\/g, '/');
+const normalize = (path: string) => path.replaceAll('\\', '/');
 
 const isAbsolute = (path: string) => path.startsWith('/root');
 

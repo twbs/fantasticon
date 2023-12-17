@@ -17,7 +17,7 @@ jest.mock('fs', () => ({
 
 jest.mock('svgicons2svgfont', () => {
   class MockStream {
-    public events = new EventEmitter();
+    public events = new EventEmitter(); // eslint-disable-line unicorn/prefer-event-target
     public content = '';
 
     public write(chunk: any) {
@@ -56,7 +56,7 @@ const mockOptions = (svgOptions = { __mock: 'options__' } as any) =>
       foo: { id: 'foo', absolutePath: '/root/foo.svg' },
       bar: { id: 'bar', absolutePath: '/root/bar.svg' }
     }
-  } as unknown as FontGeneratorOptions);
+  }) as unknown as FontGeneratorOptions;
 
 describe('`SVG` font generator', () => {
   beforeEach(() => {

@@ -25,7 +25,7 @@ const mockOptions = {
 } as any;
 
 const cleanWhiteSpace = (subject: string): string =>
-  subject.replace(/\n+/, '').replace(/\s+/g, ' ');
+  subject.replace(/\n+/, '').replaceAll(/\s+/g, ' ');
 
 const getCleanGen = async (options = {}) =>
   cleanWhiteSpace(
