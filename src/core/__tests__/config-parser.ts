@@ -30,6 +30,7 @@ const mockConfig = {
   fontsUrl: '/fonts',
   templates: {
     css: 'css',
+    less: 'less',
     sass: 'sass',
     scss: 'scss',
     html: 'html'

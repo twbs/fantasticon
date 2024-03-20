@@ -9,6 +9,7 @@ import css from './css';
 import html from './html';
 import json from './json';
 import ts from './ts';
+import less from './less';
 import sass from './sass';
 import scss from './scss';
 
@@ -22,6 +23,7 @@ const generators: { [key in AssetType]: FontGenerator<any> } = {
   [OtherAssetType.HTML]: html,
   [OtherAssetType.JSON]: json,
   [OtherAssetType.TS]: ts,
+  [OtherAssetType.LESS]: less,
   [OtherAssetType.SASS]: sass,
   [OtherAssetType.SCSS]: scss
 };

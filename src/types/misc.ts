@@ -8,6 +8,7 @@ export enum FontAssetType {
 
 export enum OtherAssetType {
   CSS = 'css',
+  LESS = 'less',
   SCSS = 'scss',
   SASS = 'sass',
   HTML = 'html',
@@ -18,6 +19,7 @@ export enum OtherAssetType {
 export const ASSET_TYPES_WITH_TEMPLATE = [
   OtherAssetType.CSS,
   OtherAssetType.HTML,
+  OtherAssetType.LESS,
   OtherAssetType.SCSS,
   OtherAssetType.SASS
 ];
