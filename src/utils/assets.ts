@@ -24,7 +24,6 @@ export const ASSETS_EXTENSION = 'svg';
 
 export const loadPaths = async (dir: string): Promise<string[]> => {
   const globPath = join(dir, `**/*.${ASSETS_EXTENSION}`);
-
   const files = await promisify(glob)(globPath, {});
 
   if (!files.length) {
