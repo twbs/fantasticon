@@ -1,8 +1,12 @@
-import _ttf2woff2 from 'ttf2woff2';
+import type ttf2woff2Type from 'ttf2woff2' with {
+  'resolution-mode': 'import'
+};
 import { FontGeneratorOptions } from '../../../types/generator';
 import woff2Gen from '../woff2';
 
-const ttf2woff2 = _ttf2woff2 as unknown as jest.Mock<typeof _ttf2woff2>;
+const ttf2woff2 = jest.requireMock('ttf2woff2') as jest.Mock<
+  typeof ttf2woff2Type
+>;
 
 jest.mock('ttf2woff2', () =>
   jest.fn(content => ({ buffer: `::woff2(${content})::` }))

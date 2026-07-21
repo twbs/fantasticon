@@ -1,56 +1,61 @@
 import picocolor from 'picocolors';
-import figures from 'figures';
 import { RunnerResults } from '../core/runner';
 import { pluralize } from '../utils/string';
 
-export const getLogger = (debug = false, silent = false) => ({
-  error(error: Error | string) {
-    const message = (error instanceof Error && error.message) || error;
+export const getLogger = async (debug = false, silent = false) => {
+  const { default: figures } = await import('figures');
 
-    console.log(picocolor.red(String(message)));
+  return {
+    error(error: Error | string) {
+      const message = (error instanceof Error && error.message) || error;
 
-    if (debug && error instanceof Error) {
-      console.log(error.stack);
-    }
-  },
+      console.log(picocolor.red(String(message)));
 
-  log(...values: any[]) {
-    if (!silent) {
-      console.log(...values);
-    }
-  },
+      if (debug && error instanceof Error) {
+        console.log(error.stack);
+      }
+    },
 
-  start(loadedConfigPath: string = null) {
-    this.log(picocolor.yellow('Generating font kit...'));
+    log(...values: any[]) {
+      if (!silent) {
+        console.log(...values);
+      }
+    },
 
-    if (!loadedConfigPath) return;
-    this.log(
-      picocolor.green(
-        `${figures.tick} Using configuration file: ${picocolor.green(
-          picocolor.bold(loadedConfigPath)
-        )}`
-      )
-    );
-  },
+    start(loadedConfigPath: string = null) {
+      this.log(picocolor.yellow('Generating font kit...'));
 
-  results({ assetsIn, writeResults, options: { inputDir } }: RunnerResults) {
-    const iconsCount = Object.values(assetsIn).length;
-
-    this.log(
-      picocolor.white(
-        `${figures.tick} ${iconsCount} ${pluralize(
-          'SVG',
-          iconsCount
-        )} found in ${inputDir}`
-      )
-    );
-
-    for (const { writePath } of writeResults) {
+      if (!loadedConfigPath) return;
       this.log(
-        picocolor.blue(`${figures.tick} Generated ${picocolor.cyan(writePath)}`)
+        picocolor.green(
+          `${figures.tick} Using configuration file: ${picocolor.green(
+            picocolor.bold(loadedConfigPath)
+          )}`
+        )
       );
-    }
+    },
 
-    this.log(picocolor.green(picocolor.bold('Done')));
-  }
-});
+    results({ assetsIn, writeResults, options: { inputDir } }: RunnerResults) {
+      const iconsCount = Object.values(assetsIn).length;
+
+      this.log(
+        picocolor.white(
+          `${figures.tick} ${iconsCount} ${pluralize(
+            'SVG',
+            iconsCount
+          )} found in ${inputDir}`
+        )
+      );
+
+      for (const { writePath } of writeResults) {
+        this.log(
+          picocolor.blue(
+            `${figures.tick} Generated ${picocolor.cyan(writePath)}`
+          )
+        );
+      }
+
+      this.log(picocolor.green(picocolor.bold('Done')));
+    }
+  };
+};

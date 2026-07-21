@@ -1,12 +1,15 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   rootDir: './src',
   transform: {
     '^.+\\.tsx?$': [
-      'ts-jest',
+      '@swc/jest',
       {
-        tsconfig: './tsconfig.test.json'
+        jsc: {
+          parser: { syntax: 'typescript' },
+          target: 'es2021'
+        },
+        module: { type: 'commonjs' }
       }
     ]
   }

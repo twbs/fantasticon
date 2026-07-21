@@ -1,14 +1,13 @@
 import { renderSrcAttribute } from '../css';
 import { FontAssetType } from '../../types/misc';
-import * as hashUtils from '../hash';
+import { getHash as getHashFn } from '../hash';
 
 jest.mock('path');
+jest.mock('../hash', () => ({
+  getHash: jest.fn((...values: string[]) => `::hashed(${values.join('|')})::`)
+}));
 
-const getHash = jest
-  .spyOn(hashUtils, 'getHash')
-  .mockImplementation(
-    (...values: string[]) => `::hashed(${values.join('|')})::`
-  );
+const getHash = jest.mocked(getHashFn);
 
 describe('CSS utilities', () => {
   beforeEach(() => {

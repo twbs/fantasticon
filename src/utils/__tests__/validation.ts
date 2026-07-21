@@ -77,7 +77,7 @@ describe('Cli utilities', () => {
     it('throws correct error when given values outside the given list', () => {
       const fn = listMembersParser(['a', 'b', 'c']);
 
-      expect(() => fn(['d'])).toThrowError(
+      expect(() => fn(['d'])).toThrow(
         'd is not valid - accepted values are: a, b, c'
       );
     });
