@@ -1,19 +1,19 @@
-![Logo](https://github.com/twbs/fantasticon/blob/dev/.github/logo.png)
+![Logo](https://github.com/ernstc/fantasticon/blob/dev/.github/logo.png)
 
 <h2 align="center">Fantasticon</h2>
 
-![Screenshot](https://github.com/twbs/fantasticon/blob/dev/.github/screenshot.png)
+![Screenshot](https://github.com/ernstc/fantasticon/blob/dev/.github/screenshot.png)
 
 <blockquote align="center">
   Easy-to-use, pre-configured CLI tool to generate web-font icon kits from SVG files
 </blockquote>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@twbs/fantasticon">
-    <img src="https://img.shields.io/npm/v/@twbs/fantasticon?logo=npm&logoColor=fff" alt="npm version">
+  <a href="https://github.com/ernstc/fantasticon/pkgs/npm/fantasticon">
+    <img src="https://img.shields.io/github/v/release/ernstc/fantasticon?label=package&logo=github" alt="package version">
   </a>
-  <a href="https://github.com/twbs/fantasticon/actions/workflows/ci.yml?query=branch%3Adev">
-    <img src="https://img.shields.io/github/actions/workflow/status/twbs/fantasticon/ci.yml?branch=dev&label=CI&logo=github" alt="CI status">
+  <a href="https://github.com/ernstc/fantasticon/actions/workflows/ci.yml?query=branch%3Adev">
+    <img src="https://img.shields.io/github/actions/workflow/status/ernstc/fantasticon/ci.yml?branch=dev&label=CI&logo=github" alt="CI status">
   </a>
 </p>
 
@@ -26,7 +26,7 @@ It also generates TypeScript types, JSON maps of the generated code-points, allo
 ### Install
 
 ```bash
-npm install -g @twbs/fantasticon
+npm install -g @ernstc/fantasticon
 ```
 
 ## Use
@@ -139,7 +139,7 @@ module.exports = {
 #### Simple usage
 
 ```js
-import { generateFonts } from '@twbs/fantasticon';
+import { generateFonts } from '@ernstc/fantasticon';
 
 generateFonts().then(results => console.log('Done', results));
 ```
@@ -147,7 +147,7 @@ generateFonts().then(results => console.log('Done', results));
 #### Options
 
 ```js
-import { generateFonts } from '@twbs/fantasticon';
+import { generateFonts } from '@ernstc/fantasticon';
 
 generateFonts({
   name: 'icons',

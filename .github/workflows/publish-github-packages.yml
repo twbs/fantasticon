@@ -1,0 +1,40 @@
+name: Publish GitHub Package
+
+on:
+  push:
+    branches:
+      - local-dev
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    if: github.repository == 'ernstc/fantasticon'
+    name: Publish private package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: '24.14.0'
+          cache: npm
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@ernstc'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Set branch package version
+        run: npm version "4.0.${GITHUB_RUN_NUMBER}" --no-git-tag-version
+      - name: Publish to GitHub Packages
+        run: npm publish --access restricted --tag local-dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
