@@ -8,18 +8,12 @@ const MOCK_GLOBS = {
   './empty/**/*.svg': []
 };
 
-module.exports = (
-  glob: string,
-  _: {},
-  callback: (err: Error | null, paths: string[] | null) => void
-) => {
-  setTimeout(() => {
-    const paths = MOCK_GLOBS[glob];
+export const glob = async (pattern: string): Promise<string[]> => {
+  const paths = MOCK_GLOBS[pattern];
 
-    if (!paths) {
-      return callback(new Error(`Invalid glob: ${glob}`), null);
-    }
+  if (!paths) {
+    throw new Error(`Invalid glob: ${pattern}`);
+  }
 
-    return callback(null, paths);
-  });
+  return paths;
 };

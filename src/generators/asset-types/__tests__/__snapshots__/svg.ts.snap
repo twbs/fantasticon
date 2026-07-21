@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`\`SVG\` font generator passes correctly format options to \`SVGIcons2SVGFontStream\` 1`] = `"processed->content->/root/foo.svg|{"name":"foo","unicode":["\\u0001"]}$processed->content->/root/bar.svg|{"name":"bar","unicode":["\\u0001"]}$"`;
 

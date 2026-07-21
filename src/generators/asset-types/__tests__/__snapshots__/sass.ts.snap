@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`\`SASS\` asset generator renders SASS correctly with \`selector\` option 1`] = `
 "$test-font: "test"

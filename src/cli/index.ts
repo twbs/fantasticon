@@ -1,4 +1,4 @@
-import commander from 'commander';
+import type { Command } from 'commander' with { 'resolution-mode': 'import' };
 import { FontAssetType, OtherAssetType } from '../types/misc';
 import { loadConfig, DEFAULT_FILEPATHS } from './config-loader';
 import { DEFAULT_OPTIONS } from '../constants';
@@ -15,10 +15,11 @@ const {
 const getCommandName = () => (bin && Object.keys(bin)[0]) || packageName;
 
 const cli = async () => {
-  config();
+  const commander = await import('commander');
+  config(commander);
   const input = commander.program.parse(process.argv);
   const { debug, silent, config: configPath } = input.opts();
-  const logger = getLogger(debug, silent);
+  const logger = await getLogger(debug, silent);
 
   try {
     const { loadedConfig, loadedConfigPath } = await loadConfig(configPath);
@@ -51,7 +52,11 @@ const printDefaultOption = (key: string) =>
 
 const printConfigPaths = () => DEFAULT_FILEPATHS.join(' | ');
 
-const config = () => {
+const config = (
+  commander: typeof import('commander', {
+    with: { 'resolution-mode': 'import' }
+  })
+) => {
   commander.program
     .storeOptionsAsProperties(false)
     .name(getCommandName())
@@ -113,7 +118,7 @@ const config = () => {
     .option('--silent', 'run with no logs' + printDefaultValue(false));
 };
 
-const buildOptions = async (cmd: commander.Command, loadedConfig = {}) => {
+const buildOptions = async (cmd: Command, loadedConfig = {}) => {
   const [inputDir] = cmd.args;
   const opts = cmd.opts();
 

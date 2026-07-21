@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`\`TS\` asset generator generates constant only 1`] = `
 "export const MY_ICONS_SET_CODEPOINTS: Record<string, string> = {

@@ -1,11 +1,13 @@
-import * as _SVGIcons2SVGFontStream from 'svgicons2svgfont';
+import type { SVGIcons2SVGFontStream as SVGIcons2SVGFontStreamType } from 'svgicons2svgfont' with {
+  'resolution-mode': 'import'
+};
 import { FontAssetType } from '../../../types/misc';
 import { FontGeneratorOptions } from '../../../types/generator';
 import svgGen from '../svg';
 
-const SVGIcons2SVGFontStream = _SVGIcons2SVGFontStream as unknown as jest.Mock<
-  typeof _SVGIcons2SVGFontStream
->;
+const { SVGIcons2SVGFontStream } = jest.requireMock('svgicons2svgfont') as {
+  SVGIcons2SVGFontStream: jest.Mock<typeof SVGIcons2SVGFontStreamType>;
+};
 
 jest.mock('fs', () => ({
   createReadStream: (filepath: string) => ({
@@ -41,7 +43,9 @@ jest.mock('svgicons2svgfont', () => {
     }
   }
 
-  return jest.fn(() => new MockStream());
+  return {
+    SVGIcons2SVGFontStream: jest.fn(() => new MockStream())
+  };
 });
 
 const mockOptions = (svgOptions = { __mock: 'options__' } as any) =>
@@ -71,7 +75,6 @@ describe('`SVG` font generator', () => {
       descent: 2,
       fontHeight: 1,
       fontName: 'foo',
-      log: expect.any(Function),
       normalize: false,
       __mock: 'options__'
     });
@@ -80,8 +83,7 @@ describe('`SVG` font generator', () => {
   });
 
   test('passes correctly format options to `SVGIcons2SVGFontStream`', async () => {
-    const log = () => null;
-    const formatOptions = { descent: 5, fontHeight: 6, log };
+    const formatOptions = { descent: 5, fontHeight: 6, round: 7 };
     const result = await svgGen.generate(mockOptions(formatOptions), null);
 
     expect(result).toMatchSnapshot();
@@ -91,8 +93,8 @@ describe('`SVG` font generator', () => {
       descent: 5,
       fontHeight: 6,
       fontName: 'foo',
-      log,
-      normalize: false
+      normalize: false,
+      round: 7
     });
   });
 });
