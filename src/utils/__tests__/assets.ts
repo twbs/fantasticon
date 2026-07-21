@@ -1,8 +1,10 @@
 import { writeFile } from 'fs/promises';
+import { glob } from 'glob';
 import { DEFAULT_OPTIONS } from '../../constants';
 import { GetIconIdFn } from '../../types/misc';
 import { loadAssets, loadPaths, writeAssets } from '../assets';
 
+const globMock = glob as any as jest.Mock;
 const writeFileMock = writeFile as any as jest.Mock;
 
 jest.mock('path');
@@ -13,6 +15,7 @@ jest.mock('fs/promises', () => ({
 
 describe('Assets utilities', () => {
   beforeEach(() => {
+    globMock.mockClear();
     writeFileMock.mockClear();
   });
 
@@ -28,6 +31,14 @@ describe('Assets utilities', () => {
       expect(paths.length).toBeTruthy();
 
       paths.forEach(path => expect(typeof path).toBe('string'));
+    });
+
+    it('treats backslashes in Windows glob paths as separators', async () => {
+      await loadPaths('./valid');
+
+      expect(globMock).toHaveBeenCalledWith('./valid/**/*.svg', {
+        windowsPathsNoEscape: true
+      });
     });
 
     it('resolves an Array of the correct filepaths within the given directory', async () => {
