@@ -8,7 +8,7 @@ const MOCK_GLOBS = {
   './empty/**/*.svg': []
 };
 
-export const glob = async (pattern: string): Promise<string[]> => {
+export const glob = jest.fn(async (pattern: string): Promise<string[]> => {
   const paths = MOCK_GLOBS[pattern];
 
   if (!paths) {
@@ -16,4 +16,4 @@ export const glob = async (pattern: string): Promise<string[]> => {
   }
 
   return paths;
-};
+});
