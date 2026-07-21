@@ -29,7 +29,7 @@ export const loadPaths = async (dir: string): Promise<string[]> => {
     throw new Error(`No SVGs found in ${dir}`);
   }
 
-  return files;
+  return files.sort();
 };
 
 const failForConflictingId = (
